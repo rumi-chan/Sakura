@@ -7,7 +7,7 @@
   </p>
   <p>
     <a href="https://github.com/rumi-chan/Sakura">
-      <img src="https://img.shields.io/github/stars/rumi-chan/Sakura?style=for-the-badge" />
+      <img src="https://img.shields.io/github/stars/rumi-chan/Sakura.svg?style=for-the-badge" />
     </a>
     <a href="./LICENSE">
       <img src ="https://img.shields.io/github/license/rumi-chan/Sakura.svg?style=for-the-badge"/>

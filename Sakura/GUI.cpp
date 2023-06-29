@@ -36,10 +36,9 @@ void GUI::render() noexcept
 	}
 	static const auto vectorGetter = [](void* vec, std::int32_t idx, const char** out_text) noexcept
 	{
-		//temporarily removed
-		//const auto& vector{ *static_cast<std::vector<SkinDatabase::PetsInfo>*>(vec) };
-		//if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
-		//*out_text = idx == 0 ? "Default" : vector.at(idx - 1).skinName;
+		const auto& vector{ *static_cast<std::vector<SkinDatabase::PetsInfo>*>(vec) };
+		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;
+		*out_text = idx == 0 ? "Default" : vector.at(idx - 1).skinName;
 		return true;
 	};
 

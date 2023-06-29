@@ -1,7 +1,7 @@
 <br>
 <div align="center">
     <img src="https://i.imgur.com/aF3urSc.png" width="144">
-  <h1 align="center">Sakura (Release on 13.13)</h1>
+  <h1 align="center">Sakura</h1>
   <p align="center">
     <strong>Internal pet changer</strong> for <a href="https://teamfighttactics.leagueoflegends.com/">Teamfight Tactics</strong>
   </p>
@@ -45,8 +45,9 @@
 ### Prerequisites
 - Visual Studio 2022
   - Desktop development with C++
-  - .NET desktop development
   - Windows 10 SDK
+- Source for the injector
+  - https://github.com/R3nzTheCodeGOD/R3nzSkin/tree/main/R3nzSkin_Injector
 
 ## Credits
    This program is an updated version of the <a href="https://github.com/R3nzTheCodeGOD">R3nzTheCodeGOD</a>/<a href="https://github.com/R3nzTheCodeGOD/R3nzSkinTFT">R3nzSkinTFT</a> project since his military service.

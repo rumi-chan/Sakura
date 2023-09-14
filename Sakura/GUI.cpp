@@ -57,7 +57,7 @@ void GUI::render() noexcept
 			player->changeSkin(cheatManager.database->pets[cheatManager.config->currentComboSkinIndex - 1].modelName, cheatManager.config->curretSkinId);
 	});
 
-	ImGui::Begin("Sakura", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_AlwaysAutoResize);
+	ImGui::Begin("Sakura (Github)", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_AlwaysAutoResize);
 	if (ImGui::BeginTabBar("TabBar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoTooltip)) {
 
 		if (ImGui::BeginTabItem("About")) {

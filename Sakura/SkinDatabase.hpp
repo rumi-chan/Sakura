@@ -68,6 +68,7 @@ public:
 		{ "PetPenguKnight",		"Featherknight",		std::make_pair(1, 56)},
 		{ "PetPixiMander",		"Piximander",			std::make_pair(1, 24)},
 		{ "PetPoro",			"Poro",				std::make_pair(1, 6)},
+		{ "PetPoroFluft",		"Fluft of Poros",				std::make_pair(1, 1)},
 		{ "PetPupDragon",		"Bungo",			std::make_pair(1, 18)},
 		{ "PetQiyanaDog",		"QiQi",				std::make_pair(1, 33)},
 		{ "PetRazorBeak",		"Raptors",			std::make_pair(1, 18)},

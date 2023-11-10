@@ -21,7 +21,7 @@
 ## Features
 - Change the skin/model of your little legend.
 - Change anytime and unlimited times in single game.
-- Supports all Riot server languages
+- Supports all server languages
 - <a href="https://github.com/ocornut/imgui">ImGui</a> for in-game drawing.
 - <a href="https://github.com/nlohmann/json">JSON</a> based configuration saving & loading
 
@@ -54,7 +54,7 @@
 - Use at your own risk.
 - However, there have been no bans in the ~2 year period that we have been using the method behind R3nzSkin and Sakura. So far Sakura is safe and undetected.
 ### Regions support?
-- Only Riot servers
+- All regions, including Tencent server.
 ### Is Sakura a virus?
 - Definitely not. It's a false positive. Sakura is open-source, you can also use your compiled version as well.
 - Do not download Sakura from anywhere other than this repository. I am not responsible if your computer is infected with viruses by downloading Sakura from elsewhere.

@@ -24,11 +24,6 @@ inline void footer() noexcept
 void GUI::render() noexcept
 {
 	static const auto player{ cheatManager.memory->localPlayer };
-	static bool show_app_style_editor = false;
-	if (show_app_style_editor) {
-		ImGui::ShowStyleEditor();
-		ImGui::End();
-	}
 	static bool show_log = false;
 	if (show_log) {
 		ImGui::Begin("Log", nullptr);
@@ -106,7 +101,6 @@ void GUI::render() noexcept
 			ImGui::Separator();
 			ImGui::hotkey("Menu Key", cheatManager.config->menuKey);
 			ImGui::Separator();
-			ImGui::Checkbox("Show style editor", &show_app_style_editor);
 			ImGui::Checkbox("Show log", &show_log);
 			if (ImGui::Button("Force Close"))
 				cheatManager.hooks->uninstall();

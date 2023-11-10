@@ -80,7 +80,7 @@ private:
 		},
 		{
 			{
-				"E8 ? ? ? ? 41 8B 97 C8 11 00 00"
+				"E8 ? ? ? ? 41 8B 97 ? ? ? ? 48 8B 0D ? ? ? ?"
 			}, true, false, false, 0, &offsets::functions::FnCharacterDataStack__Push
 		}
 	};

@@ -64,7 +64,7 @@ namespace d3d_vtable {
 		p_swap_chain->GetBuffer(0u, IID_PPV_ARGS(&back_buffer));
 
 		if (back_buffer) {
-			d3d11_device->CreateRenderTargetView(back_buffer, NULL, &main_render_target_view);
+			d3d11_device->CreateRenderTargetView(back_buffer, nullptr, &main_render_target_view);
 			back_buffer->Release();
 		}
 	}
@@ -176,7 +176,7 @@ namespace d3d_vtable {
 		ImGui_ImplWin32_Init(cheatManager.memory->riotWindow);
 
 		if (is_d3d11) {
-			p_swap_chain = reinterpret_cast<IDXGISwapChain*>(device);
+			p_swap_chain = static_cast<IDXGISwapChain*>(device);
 			p_swap_chain->GetDevice(__uuidof(d3d11_device), reinterpret_cast<void**>(&(d3d11_device)));
 			d3d11_device->GetImmediateContext(&d3d11_device_context);
 			create_render_target();
@@ -184,9 +184,9 @@ namespace d3d_vtable {
 			::ImGui_ImplDX11_CreateDeviceObjects();
 		}
 		else
-			::ImGui_ImplDX9_Init(reinterpret_cast<IDirect3DDevice9*>(device));
+			::ImGui_ImplDX9_Init(static_cast<IDirect3DDevice9*>(device));
 
-		originalWndProc = WNDPROC(::SetWindowLongPtr(cheatManager.memory->riotWindow, GWLP_WNDPROC, LONG_PTR(&wndProc)));
+		originalWndProc = WNDPROC(::SetWindowLongPtr(cheatManager.memory->riotWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&wndProc)));
 		cheatManager.logger->addLog("WndProc hooked!\n\tOriginal: 0x%X\n\tNew: 0x%X\n", &originalWndProc, &wndProc);
 	}
 
@@ -205,12 +205,12 @@ namespace d3d_vtable {
 			ImGui::Render();
 
 			if (is_d3d11) {
-				d3d11_device_context->OMSetRenderTargets(1, &main_render_target_view, NULL);
+				d3d11_device_context->OMSetRenderTargets(1, &main_render_target_view, nullptr);
 				::ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 			}
 			else {
 				unsigned long colorwrite, srgbwrite;
-				const auto dvc{ reinterpret_cast<IDirect3DDevice9*>(device) };
+				const auto dvc{ static_cast<IDirect3DDevice9*>(device) };
 				dvc->GetRenderState(D3DRS_COLORWRITEENABLE, &colorwrite);
 				dvc->GetRenderState(D3DRS_SRGBWRITEENABLE, &srgbwrite);
 				dvc->SetRenderState(D3DRS_COLORWRITEENABLE, 0xffffffff);
@@ -288,7 +288,7 @@ void Hooks::install() noexcept
 
 void Hooks::uninstall() noexcept
 {
-	::SetWindowLongW(cheatManager.memory->riotWindow, GWLP_WNDPROC, LONG_PTR(originalWndProc));
+	::SetWindowLongW(cheatManager.memory->riotWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(originalWndProc));
 
 	if (d3d_device_vmt)
 		d3d_device_vmt->unhook();

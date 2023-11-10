@@ -20,7 +20,7 @@ bool WINAPI HideThread(const HANDLE hThread) noexcept
 {
 	__try {
 		using FnSetInformationThread = NTSTATUS(NTAPI*)(HANDLE ThreadHandle, UINT ThreadInformationClass, PVOID ThreadInformation, ULONG ThreadInformationLength);
-		const auto NtSetInformationThread{ reinterpret_cast<FnSetInformationThread>(::GetProcAddress(::GetModuleHandle(L"ntdll.dll"), "NtSetInformationThread")) };
+		const auto NtSetInformationThread{ reinterpret_cast<FnSetInformationThread>(::GetProcAddress(::GetModuleHandleW(L"ntdll.dll"), "NtSetInformationThread")) };
 
 		if (!NtSetInformationThread)
 			return false;
@@ -38,7 +38,7 @@ static void WINAPI DllAttach([[maybe_unused]] LPVOID lp) noexcept
 	using namespace std::chrono_literals;
 	cheatManager.init();
 	if (HideThread(::GetCurrentThread()))
-		cheatManager.logger->addLog("[+] Thread Hided!\n");
+		cheatManager.logger->addLog("[+] Thread Hidden!\n");
 
 	cheatManager.memory->Search(true);
 	while (true) {

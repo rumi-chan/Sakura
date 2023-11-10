@@ -29,7 +29,7 @@ void GUI::render() noexcept
 		ImGui::Begin("Log", nullptr);
 		cheatManager.logger->draw();
 	}
-	static const auto vectorGetter = [](void* vec, std::int32_t idx, const char** out_text) noexcept
+	static const auto vectorGetter = [](void* vec, const std::int32_t idx, const char** out_text) noexcept
 	{
 		const auto& vector{ *static_cast<std::vector<SkinDatabase::PetsInfo>*>(vec) };
 		if (idx < 0 || idx > static_cast<std::int32_t>(vector.size())) return false;

@@ -16,14 +16,15 @@
 </div>
 <br>
 
-<img src="https://i.imgur.com/rWG6LPD.png">
+<img src="https://i.imgur.com/jXVsaYR.png">
 
 ## Features
-- Change the skin/model of your little legend.
+- Change skin/model of your little legend.
+- Change skin/model for everyone in the lobby.
 - Change anytime and unlimited times in single game.
-- Supports all server languages
+- Supports all server languages.
 - <a href="https://github.com/ocornut/imgui">ImGui</a> for in-game drawing.
-- <a href="https://github.com/nlohmann/json">JSON</a> based configuration saving & loading
+- <a href="https://github.com/nlohmann/json">JSON</a> based configuration saving & loading.
 
 ## Usage
    1. Compile source or <a href="https://github.com/rumi-chan/Sakura/releases/latest">download</a> compiled version.
@@ -40,6 +41,7 @@
 1. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 1. Push to the Branch (`git push origin feature/AmazingFeature`)
 2. [Open a Pull Request](https://github.com/rumi-chan/Sakura/pulls)
+> DM me if you want to contribute to the public version.
 
 ## Building
 ### Prerequisites
@@ -64,7 +66,7 @@
 - But that doesn't mean I won't update Sakura. And every version I will update the offsets for you to compile yourself if you don't trust me.
 - The source code only supports English, while the binary release supports all Riot server languages and has more utilities.
 ### How can I contribute?
-- Just fork the repo and open a pull request. I will review it and give you access to the latest source code.
+- Just fork the repo and open a pull request or DM me through Discord. I will review it and give you access to the latest source code.
 ### Give Sakura a star if you like it :)
 
 ## Credits

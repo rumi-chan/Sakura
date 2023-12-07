@@ -9,6 +9,9 @@
     <a href="https://github.com/rumi-chan/Sakura">
       <img src="https://img.shields.io/github/stars/rumi-chan/Sakura.svg?style=for-the-badge" />
     </a>
+    <a href="https://discord.gg/C2fXemxsrG">
+      <img src ="https://img.shields.io/discord/1180488468359544912?style=for-the-badge&logo=discord&logoColor=white&label=discord&color=5c5fff"/>
+    </a>
     <a href="./LICENSE">
       <img src ="https://img.shields.io/github/license/rumi-chan/Sakura.svg?style=for-the-badge"/>
     </a>
@@ -28,7 +31,7 @@
 
 ## Usage
    1. Compile source or <a href="https://github.com/rumi-chan/Sakura/releases/latest">download</a> compiled version.
-   2. Use `Sakura_Injector` or inject the resulting DLL into the game yourself.
+   2. Use `Sakura_Injector` or rename `Sakura.dll` to `hid.dll` to inject the resulting DLL into the game yourself.
       - *Administrator* privilege may be needed if failed to inject.
       - League client can crash if injected before going into arena.
          - A workaround is to not inject until you are in the arena (you will need to be fast to not disrupt the game).

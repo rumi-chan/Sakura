@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+   push:
+    branches: [ main ]
+
+env:
+  SOLUTION_FILE_PATH: ./Sakura.sln
+  BUILD_CONFIGURATION: Sakura
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+        
+    - name: Build Sakura solution
+      working-directory: ./
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      
+    - name: Upload Sakura latest artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: Sakura
+        path: ./Release/Sakura/*
+        if-no-files-found: error

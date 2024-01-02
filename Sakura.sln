@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sakura", "Sakura\Sakura.vcxproj", "{17B6E7A6-AA76-4C09-B2AA-E2055EF748D2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sakura.Launcher", "Sakura.Launcher\Sakura.Launcher.vcxproj", "{40F6875E-C1E5-4C10-A129-6E84CE034801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Sakura|x64 = Sakura|x64
@@ -12,6 +14,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{17B6E7A6-AA76-4C09-B2AA-E2055EF748D2}.Sakura|x64.ActiveCfg = Sakura|x64
 		{17B6E7A6-AA76-4C09-B2AA-E2055EF748D2}.Sakura|x64.Build.0 = Sakura|x64
+		{40F6875E-C1E5-4C10-A129-6E84CE034801}.Sakura|x64.ActiveCfg = Sakura|x64
+		{40F6875E-C1E5-4C10-A129-6E84CE034801}.Sakura|x64.Build.0 = Sakura|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

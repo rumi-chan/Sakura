@@ -21,6 +21,10 @@
 
 <img src="https://i.imgur.com/jXVsaYR.png">
 
+## ℹ About
+- This repository provides the core functionality of the TFT skin changer, with a hardcoded skin database.
+- The full source code can be found [here](https://github.com/Sakurasou-Group/Sakura).
+
 ## Features
 - Change skin/model of your little legend.
 - Change skin/model for everyone in the lobby.
@@ -29,44 +33,74 @@
 - <a href="https://github.com/ocornut/imgui">ImGui</a> for in-game drawing.
 - <a href="https://github.com/nlohmann/json">JSON</a> based configuration saving & loading.
 
+## Getting Started
+### Stable Release
+1. Head over to the [releases page](https://github.com/rumi-chan/Sakura/releases)
+2. Download the latest binaries
+
+### Latest Release
+1. Log in to your [Github](https://github.com/) account
+2. Head over to the [Action](https://github.com/rumi-chan/Sakura/actions) page
+3. Click **Publish** workflow
+4. Select most recent workflow with green checkmark ✔
+	<p align="center">
+	  <a href="#"><img src="https://github.com/rumi-chan/Sakura/assets/59478113/24fee534-1c48-4538-a966-e3c875c7ef35"></a>
+	</p>
+5. Download **Sakura** in **Artifacts** section
+	<p align="center">
+	  <a href="#"><img src="https://github.com/rumi-chan/Sakura/assets/59478113/a01cfc4b-d9e2-4503-8f36-3cbae8208484"></a>
+	</p>
+
 ## Usage
-   1. Compile source or <a href="https://github.com/rumi-chan/Sakura/releases/latest">download</a> compiled version.
-   2. Use `Sakura_Injector` or rename `Sakura.dll` to `hid.dll` to inject the resulting DLL into the game yourself.
-      - *Administrator* privilege may be needed if failed to inject.
-      - League client can crash if injected before going into arena.
-         - A workaround is to not inject until you are in the arena (you will need to be fast to not disrupt the game).
-   3. Press <kbd>F1</kbd> to bring up the menu.
-   4. Select skin/model for your pet.
+### Using injector
+1. Ensure that `Sakura.dll` is in the same folder that `Sakura.Launcher.exe`.
+2. Run `Sakura.Launcher.exe`.
+3. Find a match and wait until you get to the loading screen and `LeagueGame Status` shows `Found` then press `Start`.
+4. After entering the arena, press <kbd>F1</kbd> to open the Sakura GUI.
+### Renaming DLL
+1. Rename `Sakura.dll` to `hid.dll`.
+2. Place it in the League of Legends Game folder. (e.g. C:\Riot Games\League of Legends\Game).
+3. After entering the arena, press <kbd>F1</kbd> to open the Sakura GUI.
 
 ## Contributing
 1. Fork the Project
-1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-1. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-1. Push to the Branch (`git push origin feature/AmazingFeature`)
-2. [Open a Pull Request](https://github.com/rumi-chan/Sakura/pulls)
-> DM me if you want to contribute to the public version.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. [Open a Pull Request](https://github.com/rumi-chan/Sakura/pulls)
+> DM me through Discord if you want to contribute to the public version.
 
-## Building
+## Build from source
+
 ### Prerequisites
 - Visual Studio 2022
   - Desktop development with C++
+  - .NET desktop development
   - Windows 10 SDK
-- Source for the injector
-  - https://github.com/R3nzTheCodeGOD/R3nzSkin/tree/main/R3nzSkin_Injector
+
+### Initial Steps
+- Clone the repository:
+  
+  ```
+  git clone https://github.com/rumi-chan/Sakura
+  ```
+### Build Steps
+- Open `Sakura.sln`
+- Right-click on the solution -> `Build solution`
 
 ## FAQs
 ### Can I get banned?
 - Use at your own risk.
-- However, there have been no bans in the ~2 year period that we have been using the method behind R3nzSkin and Sakura. So far Sakura is safe and undetected.
+- However, there have been no bans in the ~2 year period that we have been using the method behind **R3nzSkin** and **Sakura**. So far **Sakura** is safe and undetected.
 ### Regions support?
-- All regions, including Tencent server.
+- All regions, including **Tencent** server.
 ### Is Sakura a virus?
-- Definitely not. It's a false positive. Sakura is open-source, you can also use your compiled version as well.
-- Do not download Sakura from anywhere other than this repository. I am not responsible if your computer is infected with viruses by downloading Sakura from elsewhere.
+- Definitely not. It's a false positive. **Sakura** is open-source, you can also use your compiled version as well.
+- Do not download **Sakura** from anywhere other than this repository. I am not responsible if your computer is infected with viruses by downloading **Sakura** from elsewhere.
 > The skin changer as well as the injector uses some Win32 API's that aren't commonly used in normal programs. The project is open-source, so you are welcome to compile the skin changer on your own, otherwise disable your antivirus and add the folder with the binaries to the exclusion list.
 ### Why did you stop updating the source code?
-- There are idiots selling copies of Sakura so I decided to stop updating the source code.
-- But that doesn't mean I won't update Sakura. And every version I will update the offsets for you to compile yourself if you don't trust me.
+- There are idiots selling copies of **Sakura** so I decided to stop updating the source code.
+- But that doesn't mean I won't update **Sakura**. And every version I will update the offsets for you to compile yourself if you don't trust me.
 - The source code only supports English, while the binary release supports all Riot server languages and has more utilities.
 ### How can I contribute?
 - Just fork the repo and open a pull request or DM me through Discord. I will review it and give you access to the latest source code.

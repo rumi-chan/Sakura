@@ -34,11 +34,11 @@
 - <a href="https://github.com/nlohmann/json">JSON</a> based configuration saving & loading.
 
 ## Getting Started
-### Stable Release
+### Public Release
 1. Head over to the [releases page](https://github.com/rumi-chan/Sakura/releases)
 2. Download the latest binaries
 
-### Latest Release
+### Github Release
 1. Log in to your [Github](https://github.com/) account
 2. Head over to the [Action](https://github.com/rumi-chan/Sakura/actions) page
 3. Click **Publish** workflow

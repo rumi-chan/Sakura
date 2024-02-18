@@ -21,6 +21,13 @@
 
 <img src="https://i.imgur.com/jXVsaYR.png">
 
+<div align="center">
+	
+## Announcement
+   Due to [Vanguard's Implementation](https://support-leagueoflegends.riotgames.com/hc/en-us/articles/24169857932435-Riot-Vanguard-League-of-Legends), Sakura is no longer supported. Thank you everyone for using it.
+   
+</div>
+
 ## ℹ About
 - This repository provides the core functionality of the TFT skin changer, with a hardcoded skin database.
 - The full source code can be found [here](https://github.com/Sakurasou-Group/Sakura).

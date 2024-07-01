@@ -7,7 +7,6 @@
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx11.h"
-#include "imgui/imgui_impl_dx9.h"
 #include "imgui/imgui_impl_win32.h"
 #include "vmt_smart_hook.hpp"
 
@@ -175,16 +174,12 @@ namespace d3d_vtable {
 
 		ImGui_ImplWin32_Init(cheatManager.memory->riotWindow);
 
-		if (is_d3d11) {
-			p_swap_chain = static_cast<IDXGISwapChain*>(device);
-			p_swap_chain->GetDevice(__uuidof(d3d11_device), reinterpret_cast<void**>(&(d3d11_device)));
-			d3d11_device->GetImmediateContext(&d3d11_device_context);
-			create_render_target();
-			::ImGui_ImplDX11_Init(d3d11_device, d3d11_device_context);
-			::ImGui_ImplDX11_CreateDeviceObjects();
-		}
-		else
-			::ImGui_ImplDX9_Init(static_cast<IDirect3DDevice9*>(device));
+		p_swap_chain = static_cast<IDXGISwapChain*>(device);
+		p_swap_chain->GetDevice(__uuidof(d3d11_device), reinterpret_cast<void**>(&(d3d11_device)));
+		d3d11_device->GetImmediateContext(&d3d11_device_context);
+		create_render_target();
+		::ImGui_ImplDX11_Init(d3d11_device, d3d11_device_context);
+		::ImGui_ImplDX11_CreateDeviceObjects();
 
 		originalWndProc = WNDPROC(::SetWindowLongPtr(cheatManager.memory->riotWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&wndProc)));
 		cheatManager.logger->addLog("WndProc hooked!\n\tOriginal: 0x%X\n\tNew: 0x%X\n", &originalWndProc, &wndProc);
@@ -194,31 +189,14 @@ namespace d3d_vtable {
 	{
 		static const auto client{ cheatManager.memory->client };
 		if (client && client->gameState == GGameState_s::Running && cheatManager.gui->is_open) {
-			if (is_d3d11)
-				::ImGui_ImplDX11_NewFrame();
-			else
-				::ImGui_ImplDX9_NewFrame();
+			::ImGui_ImplDX11_NewFrame();
 			::ImGui_ImplWin32_NewFrame();
 			ImGui::NewFrame();
 			cheatManager.gui->render();
 			ImGui::EndFrame();
 			ImGui::Render();
-
-			if (is_d3d11) {
-				d3d11_device_context->OMSetRenderTargets(1, &main_render_target_view, nullptr);
-				::ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-			}
-			else {
-				unsigned long colorwrite, srgbwrite;
-				const auto dvc{ static_cast<IDirect3DDevice9*>(device) };
-				dvc->GetRenderState(D3DRS_COLORWRITEENABLE, &colorwrite);
-				dvc->GetRenderState(D3DRS_SRGBWRITEENABLE, &srgbwrite);
-				dvc->SetRenderState(D3DRS_COLORWRITEENABLE, 0xffffffff);
-				dvc->SetRenderState(D3DRS_SRGBWRITEENABLE, false);
-				::ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
-				dvc->SetRenderState(D3DRS_COLORWRITEENABLE, colorwrite);
-				dvc->SetRenderState(D3DRS_SRGBWRITEENABLE, srgbwrite);
-			}
+			d3d11_device_context->OMSetRenderTargets(1, &main_render_target_view, nullptr);
+			::ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 		}
 	}
 
@@ -245,45 +223,15 @@ namespace d3d_vtable {
 	};
 	decltype(dxgi_resize_buffers::m_original) dxgi_resize_buffers::m_original;
 
-	struct end_scene {
-		static long WINAPI hooked(IDirect3DDevice9* p_device) noexcept
-		{
-			std::call_once(init_device, [&]() { init_imgui(p_device); });
-			render(p_device);
-			return m_original(p_device);
-		}
-		static decltype(&hooked) m_original;
-	};
-	decltype(end_scene::m_original) end_scene::m_original;
-
-	struct reset {
-		static long WINAPI hooked(IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* parametrs) noexcept
-		{
-			::ImGui_ImplDX9_InvalidateDeviceObjects();
-			const auto hr{ m_original(device, parametrs) };
-			if (hr >= 0)
-				::ImGui_ImplDX9_CreateDeviceObjects();
-			return hr;
-		}
-		static decltype(&hooked) m_original;
-	};
-	decltype(reset::m_original) reset::m_original;
 };
 
 void Hooks::install() noexcept
 {
-	if (cheatManager.memory->d3dDevice) {
-		d3d_device_vmt = std::make_unique<::vmt_smart_hook>(cheatManager.memory->d3dDevice);
-		d3d_device_vmt->apply_hook<d3d_vtable::end_scene>(42);
-		d3d_device_vmt->apply_hook<d3d_vtable::reset>(16);
-		cheatManager.logger->addLog("DX9 Hooked!\n");
-	}
-	else if (cheatManager.memory->swapChain) {
-		swap_chain_vmt = std::make_unique<::vmt_smart_hook>(cheatManager.memory->swapChain);
-		swap_chain_vmt->apply_hook<d3d_vtable::dxgi_present>(8);
-		swap_chain_vmt->apply_hook<d3d_vtable::dxgi_resize_buffers>(13);
-		cheatManager.logger->addLog("DX11 Hooked!\n");
-	}
+
+	swap_chain_vmt = std::make_unique<::vmt_smart_hook>(cheatManager.memory->swapChain);
+	swap_chain_vmt->apply_hook<d3d_vtable::dxgi_present>(8);
+	swap_chain_vmt->apply_hook<d3d_vtable::dxgi_resize_buffers>(13);
+	cheatManager.logger->addLog("DX11 Hooked!\n");
 }
 
 void Hooks::uninstall() noexcept

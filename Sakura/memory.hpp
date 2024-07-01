@@ -2,7 +2,6 @@
 
 #include <Windows.h>
 #include <cstdint>
-#include <d3d9.h>
 #include <d3d11.h>
 
 #include "Offsets.hpp"
@@ -28,7 +27,6 @@ public:
 	HWND riotWindow;
 	GameClient* client;
 	AIBaseCommon* localPlayer;
-	IDirect3DDevice9* d3dDevice;
 	IDXGISwapChain* swapChain;
 private:
 	void update(bool gameClient = true) noexcept;
@@ -60,13 +58,8 @@ private:
 		},
 		{
 			{
-				"48 8D 8B ? ? ? ? 48 89 44 24 ? C7 44 24"
+				"48 8D 8D ? ? 00 00 44 8B 8C 24 ? ? 00 00"
 			}, false, true, false, 0, &offsets::AIBaseCommon::CharacterDataStack
-		},
-		{
-			{
-				"48 8B 8F ? ? 00 00 45 33 C0 8B D3 48 8B 01 FF 90 ? ? 00 00"
-			}, false, true, false, 0, &offsets::MaterialRegistry::D3DDevice
 		},
 		{
 			{
@@ -80,7 +73,7 @@ private:
 		},
 		{
 			{
-				"E8 ? ? ? ? 41 8B 97 ? ? ? ? 48 8B 0D ? ? ? ?"
+				"E8 ? ? ? ? 48 8D 8D ? ? 00 00 E8 ? ? ? 00 48 85 C0 74 1B"
 			}, true, false, false, 0, &offsets::functions::FnCharacterDataStack__Push
 		}
 	};

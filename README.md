@@ -105,10 +105,6 @@
 - Definitely not. It's a false positive. **Sakura** is open-source, you can also use your compiled version as well.
 - Do not download **Sakura** from anywhere other than this repository. I am not responsible if your computer is infected with viruses by downloading **Sakura** from elsewhere.
 > The skin changer as well as the injector uses some Win32 API's that aren't commonly used in normal programs. The project is open-source, so you are welcome to compile the skin changer on your own, otherwise disable your antivirus and add the folder with the binaries to the exclusion list.
-### Why did you stop updating the source code?
-- There are idiots selling copies of **Sakura** so I decided to stop updating the source code.
-- But that doesn't mean I won't update **Sakura**. And every version I will update the offsets for you to compile yourself if you don't trust me.
-- The source code only supports English, while the binary release supports all Riot server languages and has more utilities.
 ### How can I contribute?
 - Just fork the repo and open a pull request or DM me through Discord. I will review it and give you access to the latest source code.
 ### Give Sakura a star if you like it :)
